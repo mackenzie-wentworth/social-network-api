@@ -5,10 +5,6 @@ const {
     getUsers,
     getSingleUser,
     createUser,
-    updateUser,
-    deleteUser,
-    addFriend,
-    removeFriend,
   } = require('../../controllers/userController');
   
 // ------------------------------------------
@@ -23,24 +19,6 @@ router.route('/:userId').get(getSingleUser);
 // TODO: POST route to CREATE A NEW USER
 router.route('/').post(createUser);
 
-// TODO: PUT route to UPDATE USER by its '_id'
-router.route('/:userId').put(updateUser);
-
-// TODO: DELETE route to REMOVE USER by its '_id'
-// BONUS: REMOVE a user's associated thoughts when deleted 
-router.route('/:userId').delete(deleteUser);
-
-
-
-
-// ------------------------------------------
-// GIVEN: --> /api/users/:userId/friends/:friendId
-
-// TODO: POST route to ADD A NEW FRIEND to a user's friend list
-router.route('/:userId/friends/:friendId').post(addFriend);
-
-// TODO: DELETE route to REMOVE A FRIEND from a user's friend list
-router.route('/:userId/friends/:friendId').delete(removeFriend);
 
 
 
