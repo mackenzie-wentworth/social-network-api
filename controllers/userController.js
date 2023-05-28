@@ -23,9 +23,12 @@ const userController = {
             .then((user) =>
                 !user
                     ? res.status(404).json({ message: 'Sorry, no existing user with that ID' })
-                    : res.json(userData)
+                    : res.json(user)
             )
-            .catch((err) => res.status(500).json(err));
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+              });
     },
 
     // TODO: CREATE A NEW USER --> '/'
