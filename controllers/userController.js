@@ -8,9 +8,8 @@ const userController = {
     getUsers(req, res) {
         User.find()
             .select('-__v')
-            .then((users) => {
-                res.json(users);
-            })
+            .then((users) => 
+                res.json(users))
             .catch((err) => {
                 console.log(err);
                 res.status(500).json(err);
@@ -60,7 +59,6 @@ const userController = {
                 res.status(500).json(err);
             });
     },
-
 
     // TODO: DELETE USER by its '_id' --> '/:userId'
     deleteUser(req, res) {
