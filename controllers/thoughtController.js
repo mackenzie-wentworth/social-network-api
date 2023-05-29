@@ -100,7 +100,24 @@ const thoughtController = {
     },
 
     // ------------------------------------------
-    // TODO: CREATE (add) A REACTION stored in a single thought's 'reactions' array field --> '/:thoughtId/reactions'
+    // TODO: CREATE (ADD) A REACTION --> '/:thoughtId/reactions'
+    addReaction(req, res) {
+        Thought.findOneAndUpdate(
+            { _id: req.params.thoughtId },
+            // Add --> use $addToSet operator (stored in a single thought's 'reactions' array field)
+            { $addToSet: { reactions: req.body } },
+            { runValidators: true, new: true }
+        )
+            .then((thought) =>
+                !thought
+                    ? res.status(404).json({ message: 'Sorry, no existing thought with that ID!' })
+                    : res.json(thought)
+            )
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    },
 
 
     // TODO: PULL & REMOVE A REACTION by the reaction's 'reactionId' value --> '/:thoughtId/reactions/:reactionId'
