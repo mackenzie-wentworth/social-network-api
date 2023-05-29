@@ -55,13 +55,49 @@ const thoughtController = {
 
 
     // TODO: UPDATE A THOUGHT by its '_id' --> '/:thoughtId'
+    updateThought(req, res) {
+        Thought.findOneAndUpdate(
+            { _id: req.params.thoughtId },
+            { $set: req.body },
+            { runValidators: true, new: true }
+        )
+            .then((thought) =>
+                !thought
+                    ? res.status(404).json({ message: 'Sorry, no existing thought with that ID!' })
+                    : res.json(thought)
+            )
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    },
 
 
     // TODO: DELETE A THOUGHT by its '_id' --> '/:thoughtId'
-
-
-
-
+    deleteThought(req, res) {
+        Thought.findOneAndRemove({ _id: req.params.thoughtId })
+            .then((thought) => {
+                if (!thought) {
+                    return res.status(404).json({ message: 'Sorry, no existing thought with that ID!' });
+                }
+                // Update the user's 'thoughts' field when thought is deleted (remove specified thoughtId from user)
+                return User.findOneAndUpdate(
+                    { thoughts: req.params.thoughtId },
+                    // Remove --> use $pull operator 
+                    { $pull: { thoughts: req.params.thoughtId } },
+                    { new: true }
+                );
+            })
+            .then((user) =>
+                !user
+                    ? res.status(404).json({ message: 'Error! Thought deleted, except no existing user with that ID!' })
+                    : res.json({ message: 'Thought has successfully been deleted!' })
+            )
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    },
 
     // ------------------------------------------
     // TODO: CREATE (add) A REACTION stored in a single thought's 'reactions' array field --> '/:thoughtId/reactions'
