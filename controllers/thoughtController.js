@@ -53,7 +53,6 @@ const thoughtController = {
             });
     },
 
-
     // TODO: UPDATE A THOUGHT by its '_id' --> '/:thoughtId'
     updateThought(req, res) {
         Thought.findOneAndUpdate(
@@ -71,7 +70,6 @@ const thoughtController = {
                 res.status(500).json(err);
             });
     },
-
 
     // TODO: DELETE A THOUGHT by its '_id' --> '/:thoughtId'
     deleteThought(req, res) {
@@ -119,14 +117,25 @@ const thoughtController = {
             });
     },
 
-
     // TODO: PULL & REMOVE A REACTION by the reaction's 'reactionId' value --> '/:thoughtId/reactions/:reactionId'
-
-
-
-}
-
-
+    removeReaction(req, res) {
+        Thought.findOneAndUpdate(
+            { _id: req.params.thoughtId },
+            // Remove --> use $pull operator 
+            { $pull: { reactions: { reactionId: req.params.reactionId } } },
+            { runValidators: true, new: true }
+        )
+            .then((thought) =>
+                !thought
+                    ? res.status(404).json({ message: 'Sorry, no existing thought with that ID!' })
+                    : res.json({ message: 'Reaction has successfully been deleted!' })
+            )
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    },
+};
 
 // ------------------------------------------
 // TODO: Export
