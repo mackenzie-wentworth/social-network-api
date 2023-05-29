@@ -5,6 +5,7 @@ const {
     getUsers,
     getSingleUser,
     createUser,
+    updateUser,
   } = require('../../controllers/userController');
   
 // ------------------------------------------
@@ -18,6 +19,9 @@ router.route('/:userId').get(getSingleUser);
 
 // TODO: POST route to CREATE A NEW USER
 router.route('/').post(createUser);
+
+// TODO: PUT route to UPDATE USER by its '_id'
+router.route('/:userId').put(updateUser);
 
 
 

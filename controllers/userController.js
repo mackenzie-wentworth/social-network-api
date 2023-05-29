@@ -10,10 +10,10 @@ const userController = {
             .select('-__v')
             .then((users) => {
                 res.json(users);
-              })
+            })
             .catch((err) => {
-                console.error({ message: err });
-                return res.status(500).json(err);
+                console.log(err);
+                res.status(500).json(err);
             });
     },
     // TODO: GET A SINGLE USER by its '_id' with populated thought and friend data --> '/:userId'
@@ -22,23 +22,44 @@ const userController = {
             .select('-__v')
             .then((user) =>
                 !user
-                    ? res.status(404).json({ message: 'Sorry, no existing user with that ID' })
+                    ? res.status(404).json({ message: 'Sorry, no existing user with that ID!' })
                     : res.json(user)
             )
             .catch((err) => {
                 console.log(err);
                 res.status(500).json(err);
-              });
+            });
     },
 
     // TODO: CREATE A NEW USER --> '/'
     createUser(req, res) {
         User.create(req.body)
-          .then((user) => res.json(user))
-          .catch((err) => res.status(500).json(err));
-      },
+            .then((user) =>
+                res.json(user))
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    },
 
     // TODO: UPDATE USER by its '_id' --> '/:userId'
+    updateUser(req, res) {
+        User.findOneAndUpdate(
+            // Uses the ID, and the $set operator in mongodb to inject the request body. Enforces validation.
+            { _id: req.params.userId },
+            { $set: req.body },
+            { runValidators: true, new: true }
+        )
+            .then((user) =>
+                !user
+                    ? res.status(404).json({ message: 'Sorry, no existing user with that ID!' })
+                    : res.json(user)
+            )
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    },
 
 
     // TODO: DELETE USER by its '_id' --> '/:userId'
