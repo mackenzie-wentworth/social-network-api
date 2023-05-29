@@ -45,8 +45,8 @@ const userController = {
     // TODO: UPDATE USER by its '_id' --> '/:userId'
     updateUser(req, res) {
         User.findOneAndUpdate(
-            // Uses the ID, and the $set operator in mongodb to inject the request body. Enforces validation.
             { _id: req.params.userId },
+            // Update --> use $set operator 
             { $set: req.body },
             { runValidators: true, new: true }
         )
@@ -88,6 +88,7 @@ const userController = {
     addFriend(req, res) {
         User.findOneAndUpdate(
             { _id: req.params.userId },
+            // Add --> use $addToSet operator 
             { $addToSet: { friends: req.params.friendId } },
             { new: true }
         )
@@ -102,11 +103,25 @@ const userController = {
             });
     },
 
-
     // TODO: REMOVE A FRIEND from a user's friend list --> '/:userId/friends/:friendId'
-
-
-}
+    removeFriend(req, res) {
+        User.findOneAndUpdate(
+            { _id: req.params.userId },
+            // Remove --> use $pull operator 
+            { $pull: { friends: req.params.friendId } },
+            { new: true }
+        )
+            .then((user) =>
+                !user
+                    ? res.status(404).json({ message: 'Sorry, no existing user with that ID!' })
+                    : res.json(user)
+            )
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    },
+};
 
 // ------------------------------------------
 // TODO: Export
