@@ -64,10 +64,24 @@ const userController = {
 
     // TODO: DELETE USER by its '_id' --> '/:userId'
     // BONUS: REMOVE a user's associated thoughts when deleted 
-
-
-
-
+    deleteUser(req, res) {
+        User.findOneAndDelete({ _id: req.params.userId })
+          .then((user) => {
+            if (!user) {
+              return res.status(404).json({ message: 'No user with this id!' });
+            }
+    
+            // get user id and delete their associate thoughts
+            return Thought.deleteMany({ _id: { $in: user.thoughts } });
+          })
+          .then(() => {
+            res.json({ message: 'User and associated thoughts have been deleted!' });
+          })
+          .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+          });
+      },
 
     // ------------------------------------------
     // TODO: ADD A NEW FRIEND to a user's friend list --> '/:userId/friends/:friendId'

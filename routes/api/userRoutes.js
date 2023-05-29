@@ -6,6 +6,7 @@ const {
     getSingleUser,
     createUser,
     updateUser,
+    deleteUser
   } = require('../../controllers/userController');
   
 // ------------------------------------------
@@ -22,6 +23,10 @@ router.route('/').post(createUser);
 
 // TODO: PUT route to UPDATE USER by its '_id'
 router.route('/:userId').put(updateUser);
+
+// TODO: DELETE route to REMOVE USER by its '_id'
+// BONUS: REMOVE a user's associated thoughts when deleted 
+router.route('/:userId').delete(deleteUser);
 
 
 
