@@ -19,6 +19,8 @@ const userController = {
     getSingleUser(req, res) {
         User.findOne({ _id: req.params.userId })
             .select('-__v')
+            .populate('friends')
+            .populate('thoughts')
             .then((user) =>
                 !user
                     ? res.status(404).json({ message: 'Sorry, no existing user with that ID!' })
