@@ -5,6 +5,7 @@
 * GitHub Repository for Application: 
 
 ## Description
+For this week's Challenge, I was tasked to build a social network API from scratch using a NoSQL database. The **Social Network API** is intended to be used as a web application where users can share thoughts, reactions, and create a friend list. To create the back end functionality of the application, I used `Express.js` routing configuration, `MongoDB` database, and `Mongoose` ODM.
 
 ## Table of Contents
 
@@ -70,7 +71,7 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 To demonstrate the functionality of the Social Network API, this project features application testing using [Insomnia](https://docs.insomnia.rest/insomnia/install).
 
 ### *How to Use Social Network API:*
-1. Before you start testing the application in Insomnia, you will first need to invoke the application through your integrated terminal. Please type the following `npm` command:
+1. In order to test the application in Insomnia, you will first need to invoke the application through your integrated terminal. Please type the following `npm` command:
 
     ```bash
         npm start
@@ -79,8 +80,6 @@ To demonstrate the functionality of the Social Network API, this project feature
 2. You should see a response in your terminal that reads, "Social Network API server now running on port 3001! 🚀"
 
 3. You are now ready to start testing the apllication using **Insomnia**!
-
-
 
 ### *Screenshots:*
 
@@ -93,9 +92,6 @@ Users & Thoughts -
 Friends & Reactions -
 * POST and DELETE routes for a user’s friend list
 * POST and DELETE routes for reactions to thoughts
-
-
----
 
 ## Technologies Used
 

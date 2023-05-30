@@ -47,7 +47,7 @@ userSchema
     });
 
 // TODO: Using mongoose.model() to compile a model based on the schema 'userSchema'
-const User = model('user', userSchema);
+const User = model('User', userSchema);
 
 // TODO: Export 'User' model
 module.exports = User;
