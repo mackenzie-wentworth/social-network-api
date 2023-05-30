@@ -81,7 +81,7 @@ To demonstrate the functionality of the Social Network API, this project feature
 
 3. You are now ready to start testing the apllication using **Insomnia**!
 
-### *Screenshots:*
+![An image of the back end functionality for Social Network API being tested in Insomnia.](./assets/images/social-network-api-testing.png)
 
 ### *Walkthrough Video Demonstration:*
 Users & Thoughts - [Click to watch video here!](https://github.com/mackenzie-wentworth/social-network-api/assets/122484637/7b9f291b-82d5-4baa-a2d1-3b5e961cecf7)

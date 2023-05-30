@@ -1,7 +1,6 @@
 // TODO: Import Dependencies (import models and mongoose)
 const { User, Thought } = require('../models');
 
-// ------------------------------------------
 const thoughtController = {
 
     // TODO: GET ALL THOUGHTS --> '/'
@@ -137,6 +136,5 @@ const thoughtController = {
     },
 };
 
-// ------------------------------------------
 // TODO: Export
 module.exports = thoughtController;
