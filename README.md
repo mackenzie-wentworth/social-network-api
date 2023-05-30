@@ -84,13 +84,13 @@ To demonstrate the functionality of the Social Network API, this project feature
 ![An image of the back end functionality for Social Network API being tested in Insomnia.](./assets/images/social-network-api-testing.png)
 
 ### *Walkthrough Video Demonstration:*
-Users & Thoughts - [Click to watch video here!](https://github.com/mackenzie-wentworth/social-network-api/assets/122484637/7b9f291b-82d5-4baa-a2d1-3b5e961cecf7)
+Users & Thoughts (Part 1) - [Click to watch walkthrough video here!](https://github.com/mackenzie-wentworth/social-network-api/assets/122484637/7b9f291b-82d5-4baa-a2d1-3b5e961cecf7)
 
 * GET routes for all users and all thoughts
 * GET routes for a single user and a single thought
 * POST, PUT, and DELETE routes for users and thoughts
 
-Friends & Reactions - [Click to watch video here!](https://github.com/mackenzie-wentworth/social-network-api/assets/122484637/c3930820-1808-42c8-959d-1c11285d37d9)
+Friends & Reactions (Part 2) - [Click to watch walkthrough video here!](https://github.com/mackenzie-wentworth/social-network-api/assets/122484637/c3930820-1808-42c8-959d-1c11285d37d9)
 
 * POST and DELETE routes for a user’s friend list
 * POST and DELETE routes for reactions to thoughts
