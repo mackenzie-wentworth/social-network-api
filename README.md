@@ -1,8 +1,6 @@
 # NoSQL: Social Network API
 
-## Application Links
-
-* GitHub Repository for Application: https://github.com/mackenzie-wentworth/social-network-api
+GitHub Repository for Application: https://github.com/mackenzie-wentworth/social-network-api
 
 ## Description
 For this week's Challenge, I was tasked to build a social network API from scratch using a NoSQL database. The **Social Network API** is intended to be used as a web application where users can share thoughts, reactions, and create a friend list. To create the back end functionality of the application, I used `Express.js` routing configuration, `MongoDB` database, and `Mongoose` ODM.
@@ -49,7 +47,7 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
     * [MongoDB](https://www.mongodb.com/)
     * [Insomnia](https://docs.insomnia.rest/insomnia/install)
 
-2. Next, you will need to clone this [repository](https://github.com/mackenzie-wentworth/orm-e-commerce). From GitHub, copy the `SSH URL` and use the `git clone` command to paste the SSH URL to your terminal clipboard. 
+2. Next, you will need to clone this [repository](https://github.com/mackenzie-wentworth/social-network-api). From GitHub, copy the `SSH URL` and use the `git clone` command to paste the SSH URL to your terminal clipboard. 
 
     ```bash
         git clone [github ssh url]
